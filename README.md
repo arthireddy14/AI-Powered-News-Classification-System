@@ -136,6 +136,9 @@ Two models were implemented and compared:
 
 The Self-Attention model successfully learns contextual word importance and accurately classifies news articles.
 
+### Model Dashboard Preview
+![AI News Classifier Dashboard](news_dashboard.png)
+
 ### Application Outputs
 
 * Predicted News Category
