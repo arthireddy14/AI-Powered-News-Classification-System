@@ -180,11 +180,11 @@ AI-Powered-News-Classification/
 │   └── bbc-text.csv
 │
 ├── app.py
-├── News_Classification.ipynb
+├── Articles_Attention.ipynb
 ├── requirements.txt
 │
-├── model.h5
-├── tokenizer.pkl
+├── model (1).h5
+├── tokenizer (1).pkl
 └── label_encoder.pkl
 ```
 
