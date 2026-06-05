@@ -1,114 +1,253 @@
 # 📰 AI-Powered News Classification Using Self-Attention
 
-An end-to-end Explainable AI (XAI) text classification pipeline that automatically categorizes news articles into five distinct domains using a custom **Multi-Head Self-Attention Network**. The system includes a comparative baseline LSTM analysis and is fully deployed via an interactive web interface using **Streamlit**.
+![Python](https://img.shields.io/badge/Python-3.10-blue)
+![TensorFlow](https://img.shields.io/badge/TensorFlow-DeepLearning-orange)
+![Streamlit](https://img.shields.io/badge/Streamlit-WebApp-red)
+![NLP](https://img.shields.io/badge/NLP-SelfAttention-green)
+
+## 📌 Overview
+
+This project is a Deep Learning-based News Classification System that automatically categorizes news articles into different categories using a Multi-Head Self-Attention mechanism.
+
+The model learns contextual relationships between words, identifies important information within articles, and predicts the most relevant news category. A Streamlit web application provides an interactive interface for real-time predictions.
 
 ---
 
 ## 🎯 Problem Statement
-Modern digital news agencies process thousands of incoming text streams daily. Manual categorization is slow, expensive, and scales poorly. 
 
-The objective of this project is to build an intelligent web-native text sorting system that:
-* **Automates Categorization:** Automatically routes articles to their correct domains.
-* **Captures Global Context:** Leverages Self-Attention to map long-range connections between words simultaneously.
-* **Demystifies the Black Box:** Extracts internal model weights to show exactly *which* words influenced the final classification prediction.
+News organizations receive thousands of articles every day. Manually categorizing articles is time-consuming and difficult to scale.
+
+The goal of this project is to build an intelligent system that can:
+
+* Automatically classify news articles
+* Understand contextual word relationships
+* Highlight important words using Self-Attention
+* Improve classification accuracy and interpretability
 
 ---
 
-## 🏗️ Technical Workflow & Architecture
-
-The system processes text sequentially from raw user string arrays down to dynamic visualization matrix distributions:
+## 🚀 Solution Workflow
 
 ```text
-Input Raw Text ➔ Clean & Lowercase ➔ Tokenization & Padding ➔ 128D Embedding ➔ Multi-Head Attention ➔ Global Pooling ➔ Softmax Classification
+Raw News Article
+        ↓
+Text Cleaning
+        ↓
+Tokenization & Padding
+        ↓
+Embedding Layer (128D)
+        ↓
+Multi-Head Self-Attention
+        ↓
+Global Average Pooling
+        ↓
+Dense Layer + Softmax
+        ↓
+Predicted News Category
+```
 
-Architectural Breakdown:
-Input Layer: Standardizes sentence dimensions down to a clean structural matrix ceiling (MAX_LEN = 150).
+---
 
-Embedding Layer: Projects discrete integer tokens into a continuous 128-dimensional dense vector space.
+## 🏗️ Model Architecture
 
-Multi-Head Attention Layer: Utilizes 4 processing heads to learn complex bidirectional word-to-word contextual dependencies simultaneously.
+### Components
 
-Global Average Pooling 1D: Compresses the dimensional sequence map to prevent training over-fitting.
+**1. Embedding Layer**
 
-Dense Output Head: A 5-unit layer running a Softmax activation to distribute probability scores across target classes.
+* Converts words into dense vector representations.
+* Embedding Dimension: 128
 
-📋 Project Execution Milestones
-📊 Milestone 1: Exploratory Data Analysis (EDA)
-Analyzed structural properties of the BBC News dataset to calibrate vocabulary limitations:
+**2. Multi-Head Self-Attention**
 
-Target Categories: Business (0), Politics (1), Sport (2), Tech (3), Entertainment (4).
+* Learns contextual relationships between words.
+* Uses 4 attention heads to capture different patterns simultaneously.
 
-Feature Engineering: Calculated distribution count plots, pie charts, and article length text histograms to balance classification ratios.
+**3. Global Average Pooling**
 
-🛠️ Milestone 2 & 3: Deep Preprocessing & Mapping
-Normalization steps applied: forced lowercase casting, stripped punctuation indices, and removed specialized symbol syntax using Python regex layers.
+* Reduces feature dimensions.
+* Helps prevent overfitting.
 
-Vectorized tokens and padded sequence lengths uniformly using the Keras Tokenizer API.
+**4. Dense Output Layer**
 
-🧪 Milestone 4, 5, & 6: Architecture Comparison
-Built and validated two distinct architectures to track accuracy and computational trade-offs:
+* Softmax activation for multi-class classification.
+* Predicts one of five news categories.
 
-Baseline Model (LSTM): Sequential token evaluation. Prone to directional bottlenecks over longer texts.
+---
 
-Advanced Model (Self-Attention): Parallelized context modeling. Achieved identical or superior accuracy boundaries with significantly reduced training latency.
+## ✨ Features
 
-🧠 Milestone 7 & 8: Attention Matrix Extraction (Explainable AI)
-The Multi-Head Attention layer exposes internal parameters via the return_attention_scores=True flag. The web workspace isolates these score slices, normalizes their weights, and displays a clean Word-to-Word Attention Heatmap using Seaborn, visually proving why the model marks a specific domain.
+* Automated News Classification
+* Multi-Head Self-Attention Architecture
+* Explainable AI (Attention Visualization)
+* Real-Time Predictions
+* Streamlit Web Dashboard
+* Multi-Class Category Detection
 
-🛠️ Technology Stack
-Core Language: Python
+---
 
-Deep Learning Framework: TensorFlow / Keras (Functional & Sequential API)
+## 📊 Dataset
 
-Natural Language Processing: Tokenizer, NLTK Sequence Padding
+The project uses the BBC News Dataset containing articles from five categories:
 
-Web Deployment Framework: Streamlit Core UI
+| Category      | Label |
+| ------------- | ----- |
+| Business      | 0     |
+| Politics      | 1     |
+| Sport         | 2     |
+| Tech          | 3     |
+| Entertainment | 4     |
 
-Data Visualization & Analytics: Pandas, NumPy, Matplotlib, Seaborn
+---
 
-📂 Project Directory Structure
-Plaintext
+## ⚙️ Methodology
+
+### Data Preprocessing
+
+* Text Cleaning
+* Lowercase Conversion
+* Removal of Special Characters
+* Tokenization
+* Sequence Padding
+
+### Exploratory Data Analysis
+
+* Category Distribution
+* Article Length Analysis
+* Class Balance Visualization
+
+### Model Development
+
+Two models were implemented and compared:
+
+#### Baseline Model
+
+* LSTM Network
+* Sequential text processing
+
+#### Proposed Model
+
+* Multi-Head Self-Attention Network
+* Parallel contextual learning
+* Better interpretability
+
+---
+
+## 📈 Results
+
+The Self-Attention model successfully learns contextual word importance and accurately classifies news articles.
+
+### Application Outputs
+
+* Predicted News Category
+* Prediction Confidence Score
+* Attention Heatmap Visualization
+
+---
+
+## 🛠️ Technology Stack
+
+### Programming Language
+
+* Python
+
+### Deep Learning & NLP
+
+* TensorFlow
+* Keras
+
+### Data Processing
+
+* Pandas
+* NumPy
+
+### Visualization
+
+* Matplotlib
+* Seaborn
+
+### Deployment
+
+* Streamlit
+
+---
+
+## 📂 Project Structure
+
+```text
 AI-Powered-News-Classification/
 │
 ├── data/
-│   └── bbc-text.csv          # Raw evaluation source articles
+│   └── bbc-text.csv
 │
-├── app.py                    # Streamlit web application dashboard code
-├── Articles_Attention.ipynb # Training notebook (EDA, LSTMs, Attention Modeling)
-├── requirements.txt          # Python dependency environment packages
+├── app.py
+├── News_Classification.ipynb
+├── requirements.txt
 │
-├── model (1).h5                  # Saved Neural Network weights
-├── tokenizer (1).pkl             # Serialized word index token dictionary
-└── label_encoder.pkl         # Target categorical index dictionary maps
-🚀 Running the Streamlit Web Application Locally
-Follow these quick steps to launch the interactive AI news classification dashboard on your computer:
+├── model.h5
+├── tokenizer.pkl
+└── label_encoder.pkl
+```
 
-1. Configure Local Project Directory
-Clone the repository and move your downloaded asset weights directly into the primary folder:
+---
 
-Bash
-git clone [https://github.com/arthireddy14/AI-Powered-News-Classification-System.git](https://github.com/arthireddy14/AI-Powered-News-Classification-System.git)
+## 🚀 Run Locally
+
+### 1. Clone Repository
+
+```bash
+git clone https://github.com/arthireddy14/AI-Powered-News-Classification-System.git
+
 cd AI-Powered-News-Classification-System
-2. Install Project Dependencies
-Install the required analytical libraries using the pip environment manager:
+```
 
-Bash
-pip install streamlit tensorflow pandas numpy scikit-learn seaborn matplotlib
-3. Verify Local Artifact File Names
-Ensure that the model weights and data transformation pkl assets match the internal loading script parameters:
+### 2. Install Dependencies
 
-model.h5
+```bash
+pip install -r requirements.txt
+```
 
-tokenizer.pkl
+### 3. Run Streamlit Application
 
-label_encoder.pkl
-
-4. Trigger Web Interface App
-Execute the Streamlit runtime script via your system console terminal:
-
-Bash
+```bash
 streamlit run app.py
-A local browser dashboard tab will launch automatically. Paste any headline or news text to instantly observe class metrics and word-to-word attention heatmap maps!
+```
 
-👨‍💻 Author
-Arthi Reddy Aspiring AI/ML Engineer passionate about Natural Language Processing, Deep Learning, Predictive Analytics, and Explainable AI Systems.
+---
+
+## 🎯 Applications
+
+* News Recommendation Systems
+* Content Management Platforms
+* Media Monitoring
+* Automated Article Categorization
+* Information Retrieval Systems
+
+---
+
+## 🔮 Future Enhancements
+
+* BERT Integration
+* RoBERTa Integration
+* Real-Time News API Pipeline
+* Multi-Language Classification
+* Advanced Explainable AI Visualizations
+
+---
+
+## 👨‍💻 Author
+
+**Arthi Reddy**
+
+Aspiring AI/ML Engineer passionate about:
+
+* Machine Learning
+* Natural Language Processing
+* Deep Learning
+* Explainable AI
+* Data Analytics
+
+---
+
+## 📌 Repository Description
+
+AI-powered News Classification System using Multi-Head Self-Attention and Deep Learning to automatically categorize news articles and visualize contextual word importance through an interactive Streamlit dashboard.
